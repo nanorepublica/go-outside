@@ -24,3 +24,26 @@ chrome.storage.sync.get('list', function(data) {
         page.value = data.list.join('\n')
     }
 });
+
+let itemDisplay = document.getElementsByName('item-display');
+function updateDisplayPref(choice) {
+    chrome.storage.sync.set({display:choice}, function() {
+        console.log('Display Preference:', choice);
+    })
+}
+itemDisplay.forEach(function(el) {
+    el.addEventListener('change', function(ev) {
+        var value = ev.target.value;
+        updateDisplayPref(value)
+    })
+})
+chrome.storage.sync.get('display', function(data) {
+    if (data.display !== undefined) {
+        itemDisplay.forEach(function(el) {
+            if (data.display === el.value) {
+                el.setAttribute('checked', true);
+            }
+        })
+        
+    }
+});

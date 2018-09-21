@@ -6,11 +6,18 @@
 
 let outsideList = document.getElementById('outside-list');
 chrome.storage.sync.get('list', function(data) { 
-    console.log(data)
-    if (data.list !== undefined) {
-        var htmlList = data.list.map(function(i) {return '<li>' + i + '</li>'}).join('\n')
-        outsideList.innerHTML = htmlList   
-    }
+    chrome.storage.sync.get('display', function(displayData) { 
+        if (data.list !== undefined) {
+            if (displayData.display === 'random') {
+                var idx = Math.floor((Math.random() * data.list.length)) 
+                var choice = data.list[idx]
+                outsideList.innerHTML = '<h1>' + choice + '</h1>'
+            } else if (displayData.display === 'list') {
+                var htmlList = data.list.map(function(i) {return '<li>' + i + '</li>'}).join('\n')
+                outsideList.innerHTML = '<ul>' + htmlList + '</ul>'
+            } 
+        }
+    });
 });
 let background = document.getElementById('background')
 let bg_combos = [
@@ -52,9 +59,8 @@ let bg_combos = [
   }
 ]
 
-let idx = Math.floor((Math.random() * bg_combos.length) + 1);
+let bgidx = Math.floor((Math.random() * bg_combos.length));
 
-console.log(idx)
-background.style.backgroundColor = bg_combos[idx].bg
-background.style.color = bg_combos[idx].font
+background.style.backgroundColor = bg_combos[bgidx].bg
+background.style.color = bg_combos[bgidx].font
 

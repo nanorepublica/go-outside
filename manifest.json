@@ -3,7 +3,7 @@
     "version": "1.0",
     "description": "Instead of doing another thing, go outside",
     "author": "Andrew Miller",
-    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "permissions": ["activeTab", "storage"],
     "options_page": "options.html",
     "icons": {
       "16": "images/get_started16.png",
