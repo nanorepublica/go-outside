@@ -1,10 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <title>Go Outside</title>
+    <title>Go Outside...</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <style>
-    .background {
+    body {
+        margin: 0;
+    }
+    #background {
         font-family: 'Roboto', sans-serif;
         min-height: 100vh;
         min-width: 100vw;
@@ -33,11 +36,13 @@
     .box-scroll {
         height: 100vh;
         overflow: scroll;
+        display: flex;
+        align-items: center;
     }
   </style>
   </head>
   <body>
-      <div class="background">
+      <div id="background">
         <div class="grid-wrap"> 
             <div class="box">
                 <h1>Why not...</h1>
