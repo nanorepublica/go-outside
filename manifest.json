@@ -4,7 +4,7 @@
     "description": "Instead of doing another thing, go outside",
     "author": "Andrew Miller",
     "permissions": ["activeTab", "storage"],
-    "options_page": "options.html",
+    "options_page": "src/templates/options.html",
     "icons": {
       "16": "images/get_started16.png",
       "32": "images/get_started32.png",
@@ -15,7 +15,7 @@
         "default_title": "Go outside"
     },
     "chrome_url_overrides": {
-        "newtab": "newtab.html"
+        "newtab": "src/templates/newtab.html"
     },
     "manifest_version": 2
 }
