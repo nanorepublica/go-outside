@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Go Outside</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <style>
+    .background {
+        font-family: 'Roboto', sans-serif;
+        min-height: 100vh;
+        min-width: 100vw;
+        background-color: limegreen;
+        padding: 0;
+        margin: 0;
+        color: white;
+        font-size: 75px;
+        top: 0;
+        position: absolute;
+    }
+    .grid-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-gap: 10px;
+        margin: 0 50px;
+        grid-template-rows: auto;
+        align-items: center;
+        min-height: 100vh;
+    }
+    li {
+        list-style-type: none;
+        font-size: 1.2em;
+    }
+    .box-scroll {
+        height: 100vh;
+        overflow: scroll;
+    }
+  </style>
+  </head>
+  <body>
+      <div class="background">
+        <div class="grid-wrap"> 
+            <div class="box">
+                <h1>Why not...</h1>
+            </div>
+            <div class="box-scroll">
+                <ul id="outside-list">
+                    <li>Go outside</li>
+                    <li>Go for a walk</li>
+                </ul>
+            </div>
+        </div>
+      </div>
+      <script src="newtab.js"></script>
+  </body>
+</html>
