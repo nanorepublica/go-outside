@@ -11,7 +11,7 @@ chrome.storage.sync.get('list', function(data) {
             if (displayData.display === 'random') {
                 var idx = Math.floor((Math.random() * data.list.length)) 
                 var choice = data.list[idx]
-                outsideList.innerHTML = '<h1>' + choice + '</h1>'
+                outsideList.innerHTML = '<h1>' + choice + '?</h1>'
             } else if (displayData.display === 'list') {
                 var htmlList = data.list.map(function(i) {return '<li>' + i + '</li>'}).join('\n')
                 outsideList.innerHTML = '<ul>' + htmlList + '</ul>'
