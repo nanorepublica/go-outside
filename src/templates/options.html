@@ -1,33 +1,96 @@
   <!DOCTYPE html>
   <html>
-    <title>Go Outside... -Options-</title>
     <head>
-      <style>
-        button {
-          height: 30px;
-          width: 30px;
-          outline: none;
-          margin: 10px;
-        }
-      </style>
+        <title>Go Outside... -Options-</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <style>
+            body {
+                background-color: #333;
+                font-family: 'Lato', sans-serif;
+                color: #fff; 
+            }
+            h1 {
+                font-family: 'Roboto', sans-serif;
+                font-size: 4rem;
+            }
+            h2 {
+                font-family: 'Roboto', sans-serif;
+                font-size: 2.6rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            textarea {
+                width: 94%;
+                padding: 10px;
+            }
+            #container {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 10px;
+                align-items: center;
+                justify-items: center;
+            }
+            .radio {
+                display: inline-block;
+                border: solid 1px white;
+                margin: 5px;
+                padding: 10px;
+                background-color: #fff;
+                color: #333;
+                width: 39%;
+                text-align: center;
+            }
+            .radio:hover {
+                background-color: #666;
+                color: #fff;
+            }
+            .radio:active, 
+            input[type="radio"]:checked+label {
+                background-color: #cd3232;
+                color: #fff;
+            }
+            .radio.left {
+                border-radius: 10px 0 0 10px;
+                margin-right: -2px;
+            }
+            .radio.right {
+                border-radius: 0 10px 10px 0;
+                margin-left: -1px;
+            }
+            input[type="radio"] {
+                display: none;
+            }
+            #headline {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+        </style>
     </head>
     <body>
-      <div>
-        <p>Add new items below, each line is a new item</p>
-        <textarea id="list-input" cols="50" rows="10">Go Outside
+      <div id="container">
+        <div id="headline">
+            <h1>Go Outside... Options</h1>
+            <h2>less screen, more green</h2>
+        </div>
+        <div>
+            <p>Add new items below, each line is a new item</p>
+            <textarea id="list-input" rows="7">Go Outside
 Go on a walk
 Write a Journal</textarea>
-        <p>Choose either to have the whole list presented each time or a randomly picked item</p>
-        <div>
-            <input type="radio" id="list"
-                   name="item-display" value="list" />
-            <label for="list">Whole List</label>
         </div>
-
         <div>
-            <input type="radio" id="random"
-                   name="item-display" value="random" />
-            <label for="random">Randomly Chosen</label>
+            <p>Choose either to have the whole list presented <br/> each time or a randomly picked item</p>
+            <div id="radio-container">
+                <input type="radio" id="list"
+                       name="item-display" value="list" />
+                <label for="list" class="radio left">Whole List</label>
+                <input type="radio" id="random"
+                       name="item-display" value="random" />
+                <label class="radio right" for="random">Randomly Chosen </label>
+            </div>
         </div>
       </div>
     <script src="../js/options.js"></script>
