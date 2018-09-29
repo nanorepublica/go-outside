@@ -1,24 +1,29 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 'use strict';
-
+function is_firefox() {
+    return typeof(browser) !== 'undefined'
+}
 let outsideList = document.getElementById('outside-list');
-chrome.storage.sync.get('list', function(data) { 
-    chrome.storage.sync.get('display', function(displayData) { 
-        if (data.list !== undefined) {
-            if (displayData.display === 'random') {
-                var idx = Math.floor((Math.random() * data.list.length)) 
-                var choice = data.list[idx]
-                outsideList.innerHTML = '<h1>' + choice + '?</h1>'
-            } else if (displayData.display === 'list') {
-                var htmlList = data.list.map(function(i) {return '<li>' + i + '</li>'}).join('\n')
-                outsideList.innerHTML = '<ul>' + htmlList + '</ul>'
-            } 
+function getDisplayData (data) { 
+    if (data !== undefined) {
+        if (data.display === 'random') {
+            var idx = Math.floor((Math.random() * data.list.length)) 
+            var choice = data.list[idx]
+            outsideList.innerHTML = '<h1>' + choice + '?</h1>'
+        } else if (data.display === 'list') {
+            var htmlList = data.list.map(function(i) {return '<li>' + i + '</li>'}).join('\n')
+            outsideList.innerHTML = '<ul>' + htmlList + '</ul>'
+        } else {
+            chrome.runtime.openOptionsPage()
         }
-    });
-});
+    } else {
+        chrome.runtime.openOptionsPage()
+    }
+};
+if (is_firefox()) {
+    browser.storage.sync.get(['list', 'display']).then(getDisplayData)
+} else {
+    chrome.storage.sync.get(['list', 'display'], getDisplayData)
+}
 let background = document.getElementById('background')
 let bg_combos = [
   {
