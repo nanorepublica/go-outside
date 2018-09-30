@@ -2,6 +2,13 @@
 function is_firefox() {
     return typeof(browser) !== 'undefined'
 }
+function openOptionsPage() {
+    if (is_firefox()) {
+        browser.runtime.openOptionsPage()
+    } else {
+        chrome.runtime.openOptionsPage(}
+    }
+}
 let outsideList = document.getElementById('outside-list');
 function getDisplayData (data) { 
     if (data !== undefined) {
@@ -13,10 +20,10 @@ function getDisplayData (data) {
             var htmlList = data.list.map(function(i) {return '<li>' + i + '</li>'}).join('\n')
             outsideList.innerHTML = '<ul>' + htmlList + '</ul>'
         } else {
-            chrome.runtime.openOptionsPage()
+            openOptionsPage()
         }
     } else {
-        chrome.runtime.openOptionsPage()
+        openOptionsPage()
     }
 };
 if (is_firefox()) {
