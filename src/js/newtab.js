@@ -6,7 +6,7 @@ function openOptionsPage() {
     if (is_firefox()) {
         browser.runtime.openOptionsPage()
     } else {
-        chrome.runtime.openOptionsPage(}
+        chrome.runtime.openOptionsPage()
     }
 }
 let outsideList = document.getElementById('outside-list');
