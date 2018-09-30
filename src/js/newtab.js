@@ -15,10 +15,17 @@ function getDisplayData (data) {
         if (data.display === 'random') {
             var idx = Math.floor((Math.random() * data.list.length)) 
             var choice = data.list[idx]
-            outsideList.innerHTML = '<h1>' + choice + '?</h1>'
+            var h1 = document.createElement('h1')
+            h1.textContent = choice + '?'
+            outsideList.appendChild(h1)
         } else if (data.display === 'list') {
-            var htmlList = data.list.map(function(i) {return '<li>' + i + '</li>'}).join('\n')
-            outsideList.innerHTML = '<ul>' + htmlList + '</ul>'
+            var ul = document.createElement('ul')
+            data.list.map(function(i) {
+                var li = document.createElement('li')
+                li.textContent = i
+                ul.appendChild(li)
+            })
+            outsideList.appendChild(ul)
         } else {
             openOptionsPage()
         }
