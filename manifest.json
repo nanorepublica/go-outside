@@ -4,7 +4,7 @@
     "version": "1.1.1",
     "description": "Instead of doing another screen based thing, go outside, see the world, a reminder to do the positive activities in life",
     "author": "Andrew Miller",
-    "permissions": ["tabs", "activeTab", "storage"],
+    "permissions": ["tabs", "storage"],
     "background": {
         "persistent": false,
         "scripts": ["background.js"]
@@ -26,7 +26,12 @@
     "chrome_url_overrides": {
         "newtab": "src/templates/newtab.html"
     },
+    "web_accessible_resources": [
+        "src/templates/newtab.html",
+        "src/js/newtab.js"
+    ],
     "manifest_version": 2,
+    "incognito": "split",
     "applications": {
       "gecko": {
           "id": "go-outside@akmiller.co.uk",
