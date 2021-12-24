@@ -12,7 +12,7 @@ function updateList() {
         browser.storage.sync.set({list: listItems})
     } else {
         chrome.storage.sync.set({list: listItems}, setItem);
-    } 
+    }
 }
 page.addEventListener('keypress', function(ev) {
     if (ev.keyCode === 13) { // Enter key pressed
@@ -40,7 +40,7 @@ itemDisplay.forEach(function(el) {
         var value = ev.target.value;
         updateDisplayPref(value)
     })
-})    
+})
 function initData(data) {
     console.log(data)
     if (data === undefined) {
@@ -56,7 +56,7 @@ function initData(data) {
                 el.setAttribute('checked', true);
             }
         })
-        
+
     }
 };
 if (is_firefox()) {
